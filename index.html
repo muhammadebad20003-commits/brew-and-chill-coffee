@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brew & Chill Coffee Co.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            50: '#fdfbf7',
+                            100: '#f7f1e5',
+                            200: '#eddcc4',
+                            300: '#dfc29c',
+                            400: '#ce9d6d',
+                            500: '#be7d47',
+                            600: '#af663b',
+                            700: '#914f33',
+                            800: '#76412f',
+                            900: '#603729',
+                            950: '#341a13',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f7f1e5;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #ce9d6d;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-coffee-50 text-coffee-950 font-sans antialiased selection:bg-coffee-300 selection:text-coffee-950">
+
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-full bg-coffee-800 flex items-center justify-center text-coffee-100 shadow-md group-hover:bg-coffee-700 transition">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                    </div>
+                    <span class="font-serif font-bold text-2xl tracking-tight text-coffee-900">Brew & Chill</span>
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex items-center gap-8 font-medium text-coffee-800">
+                    <a href="#home" class="hover:text-coffee-500 transition-colors">Home</a>
+                    <a href="#menu" class="hover:text-coffee-500 transition-colors">Menu</a>
+                    <a href="#about" class="hover:text-coffee-500 transition-colors">About Us</a>
+                    <a href="#contact" class="hover:text-coffee-500 transition-colors">Contact</a>
+                </nav>
+
+                <!-- Action Button -->
+                <div class="hidden md:flex items-center gap-4">
+                    <a href="#menu" class="bg-coffee-800 hover:bg-coffee-900 text-coffee-50 px-5 py-2.5 rounded-full font-medium transition shadow-sm hover:shadow-md">
+                        Order Now
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-coffee-800 hover:bg-coffee-100 focus:outline-none" aria-label="Toggle Navigation">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-coffee-50/95 backdrop-blur-md border-b border-coffee-200 px-4 pt-2 pb-6 space-y-3">
+            <a href="#home" class="mobile-link block px-3 py-2 rounded-md font-medium text-coffee-900 hover:bg-coffee-100">Home</a>
+            <a href="#menu" class="mobile-link block px-3 py-2 rounded-md font-medium text-coffee-900 hover:bg-coffee-100">Menu</a>
+            <a href="#about" class="mobile-link block px-3 py-2 rounded-md font-medium text-coffee-900 hover:bg-coffee-100">About Us</a>
+            <a href="#contact" class="mobile-link block px-3 py-2 rounded-md font-medium text-coffee-900 hover:bg-coffee-100">Contact</a>
+            <a href="#menu" class="mobile-link block text-center bg-coffee-800 text-coffee-50 py-2.5 rounded-full font-medium mt-4">Order Now</a>
+        </div>
+    </header>
+
+    <section id="home" class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
+        <!-- Background Decorative Orbs -->
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-coffee-200/50 rounded-full filter blur-3xl pointer-events-none"></div>
+        <div class="absolute top-1/2 -right-24 w-96 h-96 bg-coffee-300/30 rounded-full filter blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <!-- Text Content -->
+                <div class="space-y-6 text-center md:text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-coffee-100 border border-coffee-200 text-coffee-800 text-sm font-medium">
+                        <span class="flex h-2 w-2 rounded-full bg-coffee-600"></span>
+                        Handcrafted Artisanal Brews
+                    </div>
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-coffee-950 leading-[1.15]">
+                        Sip the Passion, <br>
+                        <span class="text-coffee-600 underline decoration-coffee-300/80 decoration-wavy decoration-2">Feel the Chill.</span>
+                    </h1>
+                    <p class="text-lg text-coffee-700 max-w-xl mx-auto md:mx-0 font-normal leading-relaxed">
+                        Discover the perfect balance of rich espresso, silky smooth milk, and cold perfection. Crafted daily with ethically sourced premium beans.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 pt-2">
+                        <a href="#menu" class="w-full sm:w-auto px-8 py-4 rounded-full bg-coffee-800 text-coffee-50 font-semibold shadow-lg hover:bg-coffee-900 hover:shadow-xl transition text-center">
+                            Explore Menu
+                        </a>
+                        <a href="#about" class="w-full sm:w-auto px-8 py-4 rounded-full bg-coffee-100 text-coffee-900 border border-coffee-200 font-semibold hover:bg-coffee-200 transition text-center">
+                            Our Story
+                        </a>
+                    </div>
+                    
+                    <!-- Stats Badge -->
+                    <div class="pt-6 border-t border-coffee-200/80 grid grid-cols-3 gap-4 text-center md:text-left">
+                        <div>
+                            <p class="font-serif font-bold text-2xl text-coffee-900">100%</p>
+                            <p class="text-xs text-coffee-600 font-medium">Arabica Beans</p>
+                        </div>
+                        <div>
+                            <p class="font-serif font-bold text-2xl text-coffee-900">15+</p>
+                            <p class="text-xs text-coffee-600 font-medium">Signature Brews</p>
+                        </div>
+                        <div>
+                            <p class="font-serif font-bold text-2xl text-coffee-900">4.9★</p>
+                            <p class="text-xs text-coffee-600 font-medium">Customer Rating</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Visual Graphic -->
+                <div class="relative flex justify-center items-center">
+                    <div class="relative w-full max-w-md aspect-square rounded-3xl bg-gradient-to-tr from-coffee-800 to-coffee-600 p-3 shadow-2xl rotate-1 hover:rotate-0 transition duration-500">
+                        <div class="w-full h-full rounded-2xl bg-coffee-900 overflow-hidden relative flex flex-col items-center justify-center p-8 text-center border border-coffee-500/20">
+                            <!-- Artistic SVG Graphic representing Iced Coffee -->
+                            <div class="w-48 h-64 relative mb-4 flex items-end justify-center">
+                                <!-- Cup outline -->
+                                <div class="w-36 h-48 bg-gradient-to-b from-amber-100/30 to-amber-900/60 rounded-b-3xl border-2 border-white/20 backdrop-blur-sm relative overflow-hidden flex flex-col justify-end p-2 shadow-inner">
+                                    <!-- Coffee layers -->
+                                    <div class="w-full h-3/4 bg-amber-950/80 rounded-b-2xl relative overflow-hidden">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-coffee-950 to-amber-800"></div>
+                                        <!-- Ice Cubes SVG mockup -->
+                                        <div class="absolute top-2 left-3 w-8 h-8 bg-white/20 rounded-md rotate-12 border border-white/30 backdrop-blur-md"></div>
+                                        <div class="absolute top-4 right-4 w-7 h-7 bg-white/20 rounded-md -rotate-12 border border-white/30 backdrop-blur-md"></div>
+                                        <div class="absolute top-10 left-8 w-9 h-9 bg-white/20 rounded-md rotate-45 border border-white/30 backdrop-blur-md"></div>
+                                    </div>
+                                    <!-- Milk swirls -->
+                                    <div class="absolute top-0 inset-x-0 h-16 bg-gradient-to-b from-amber-50/90 to-transparent rounded-t-lg"></div>
+                                </div>
+                                <!-- Straw -->
+                                <div class="absolute top-0 right-10 w-3 h-56 bg-amber-200/90 rounded-full rotate-12 -z-0 shadow-md"></div>
+                            </div>
+                            
+                            <!-- Hero Tag -->
+                            <div class="absolute bottom-6 left-6 right-6 bg-coffee-950/80 backdrop-blur-md p-4 rounded-xl border border-coffee-700/50 flex items-center justify-between text-left">
+                                <div>
+                                    <p class="text-xs text-coffee-300 font-medium">Bestseller of the Week</p>
+                                    <p class="font-serif text-lg font-bold text-coffee-100">Signature Iced Latte</p>
+                                </div>
+                                <span class="bg-coffee-500 text-white font-bold px-3 py-1 rounded-full text-sm">Rs. 600</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="py-20 bg-coffee-100/60 border-y border-coffee-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-coffee-600 font-semibold uppercase tracking-wider text-sm">Crafted To Perfection</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-extrabold text-coffee-950 mt-2">Our Signature Menu</h2>
+                <p class="text-coffee-700 mt-3">From rich, intense shots to refreshing cold concoctions, taste the quality in every single cup.</p>
+            </div>
+
+            <!-- Menu Grid -->
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <!-- Menu Item 1: Ice Latte -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-coffee-200 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-full h-52 bg-coffee-100 rounded-xl mb-6 overflow-hidden relative flex items-center justify-center p-4">
+                            <!-- Visual Graphic -->
+                            <div class="w-24 h-36 bg-gradient-to-b from-coffee-200 to-coffee-800 rounded-b-2xl border-2 border-coffee-300 relative overflow-hidden shadow-md group-hover:scale-105 transition duration-300">
+                                <div class="absolute top-2 left-2 w-6 h-6 bg-white/30 rounded border border-white/40"></div>
+                                <div class="absolute top-6 right-3 w-5 h-5 bg-white/30 rounded border border-white/40"></div>
+                                <div class="absolute top-0 inset-x-0 h-10 bg-coffee-100/90"></div>
+                            </div>
+                            <span class="absolute top-3 right-3 bg-coffee-800 text-coffee-100 text-xs font-bold px-2.5 py-1 rounded-full">POPULAR</span>
+                        </div>
+                        <div class="flex items-start justify-between gap-2 mb-2">
+                            <h3 class="font-serif text-xl font-bold text-coffee-950 group-hover:text-coffee-600 transition">Signature Ice Latte</h3>
+                            <span class="font-bold text-coffee-800 text-lg">Rs. 600</span>
+                        </div>
+                        <p class="text-coffee-600 text-sm mb-4 leading-relaxed">
+                            Espresso poured over chilled whole milk and ice cubes, delicately sweetened with raw vanilla bean syrup.
+                        </p>
+                    </div>
+                    <button onclick="openModal('Signature Ice Latte', 'Rs. 600')" class="w-full py-2.5 rounded-xl border border-coffee-800 text-coffee-800 font-semibold hover:bg-coffee-800 hover:text-coffee-50 transition text-sm">
+                        Order Now
+                    </button>
+                </div>
+
+                <!-- Menu Item 2: Espresso -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-coffee-200 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-full h-52 bg-coffee-100 rounded-xl mb-6 overflow-hidden relative flex items-center justify-center p-4">
+                            <!-- Visual Graphic -->
+                            <div class="w-28 h-20 bg-coffee-900 rounded-b-full border-b-4 border-coffee-700 relative flex items-center justify-center shadow-md group-hover:scale-105 transition duration-300">
+                                <div class="w-20 h-12 bg-amber-900 rounded-b-full overflow-hidden relative">
+                                    <div class="absolute top-0 inset-x-0 h-2 bg-amber-600/80"></div>
+                                </div>
+                                <div class="absolute -right-4 top-2 w-6 h-10 border-4 border-coffee-900 rounded-r-full"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-start justify-between gap-2 mb-2">
+                            <h3 class="font-serif text-xl font-bold text-coffee-950 group-hover:text-coffee-600 transition">Classic Double Espresso</h3>
+                            <span class="font-bold text-coffee-800 text-lg">Rs. 450</span>
+                        </div>
+                        <p class="text-coffee-600 text-sm mb-4 leading-relaxed">
+                            A concentrated, full-bodied double shot extracted under 9 bars of pressure with a thick caramel crema.
+                        </p>
+                    </div>
+                    <button onclick="openModal('Classic Double Espresso', 'Rs. 450')" class="w-full py-2.5 rounded-xl border border-coffee-800 text-coffee-800 font-semibold hover:bg-coffee-800 hover:text-coffee-50 transition text-sm">
+                        Order Now
+                    </button>
+                </div>
+
+                <!-- Menu Item 3: Cold Brew -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-coffee-200 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-full h-52 bg-coffee-100 rounded-xl mb-6 overflow-hidden relative flex items-center justify-center p-4">
+                            <!-- Visual Graphic -->
+                            <div class="w-20 h-36 bg-amber-950 rounded-xl border-2 border-coffee-800 relative overflow-hidden shadow-md group-hover:scale-105 transition duration-300">
+                                <div class="absolute top-2 inset-x-2 h-4 bg-amber-900/40 rounded"></div>
+                                <div class="absolute bottom-2 left-2 right-2 h-20 bg-gradient-to-t from-black to-amber-950"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-start justify-between gap-2 mb-2">
+                            <h3 class="font-serif text-xl font-bold text-coffee-950 group-hover:text-coffee-600 transition">Slow Cold Brew</h3>
+                            <span class="font-bold text-coffee-800 text-lg">Rs. 550</span>
+                        </div>
+                        <p class="text-coffee-600 text-sm mb-4 leading-relaxed">
+                            Coarsely ground beans steeped in filtered cold water for 18 hours. Ultra-smooth, low acidity, naturally sweet.
+                        </p>
+                    </div>
+                    <button onclick="openModal('Slow Cold Brew', 'Rs. 550')" class="w-full py-2.5 rounded-xl border border-coffee-800 text-coffee-800 font-semibold hover:bg-coffee-800 hover:text-coffee-50 transition text-sm">
+                        Order Now
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-coffee-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+                
+                <!-- Story Card Graphic -->
+                <div class="relative">
+                    <div class="bg-coffee-900 rounded-3xl p-8 text-coffee-100 relative overflow-hidden shadow-2xl">
+                        <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-coffee-700/30 rounded-full filter blur-2xl"></div>
+                        <span class="text-xs uppercase tracking-widest text-coffee-300 font-semibold">Since 2024</span>
+                        <h3 class="font-serif text-3xl font-bold text-coffee-50 mt-2 mb-4">Passion for the Perfect Roast</h3>
+                        <p class="text-coffee-200 text-sm leading-relaxed mb-6">
+                            Brew & Chill began with a simple mission: to elevate daily coffee rituals through meticulous bean selection, roasting accuracy, and warm community atmosphere.
+                        </p>
+                        <div class="space-y-4 border-t border-coffee-800 pt-6">
+                            <div class="flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full bg-coffee-600 flex items-center justify-center text-xs mt-0.5">✓</div>
+                                <div>
+                                    <p class="font-semibold text-sm text-coffee-50">Direct Trade Beans</p>
+                                    <p class="text-xs text-coffee-300">Sourced directly from sustainable high-altitude farms.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full bg-coffee-600 flex items-center justify-center text-xs mt-0.5">✓</div>
+                                <div>
+                                    <p class="font-semibold text-sm text-coffee-50">Master Baristas</p>
+                                    <p class="text-xs text-coffee-300">Every cup is precision brewed to highlight natural flavor notes.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Column -->
+                <div class="space-y-6">
+                    <span class="text-coffee-600 font-semibold uppercase tracking-wider text-sm">About Brew & Chill</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-extrabold text-coffee-950">Where Artisanal Coffee Meets Relaxed Vibes</h2>
+                    <p class="text-coffee-700 leading-relaxed">
+                        Whether you need a quick morning caffeine kick or a cozy corner to chill out with an Ice Latte, our cafe is designed to be your serene sanctuary away from the hustle.
+                    </p>
+                    <p class="text-coffee-700 leading-relaxed">
+                        We pride ourselves on full transparency—from bean origin to brewing method—ensuring every beverage delivered is fresh, authentic, and satisfying.
+                    </p>
+                    
+                    <div class="pt-4 flex items-center gap-6">
+                        <div class="flex -space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-coffee-300 border-2 border-white flex items-center justify-center font-bold text-xs">BC</div>
+                            <div class="w-10 h-10 rounded-full bg-coffee-400 border-2 border-white flex items-center justify-center font-bold text-xs">☕</div>
+                            <div class="w-10 h-10 rounded-full bg-coffee-500 border-2 border-white flex items-center justify-center font-bold text-xs text-white">★</div>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-coffee-950">Join our Coffee Club</p>
+                            <p class="text-xs text-coffee-600">Over 1,000+ happy daily coffee lovers</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-coffee-100/60 border-t border-coffee-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-16">
+                
+                <!-- Info Column -->
+                <div class="space-y-6">
+                    <span class="text-coffee-600 font-semibold uppercase tracking-wider text-sm">Get In Touch</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-extrabold text-coffee-950">Visit Us or Order Ahead</h2>
+                    <p class="text-coffee-700">Have questions or want to cater an event? Drop us a message or pop into our physical cafe location.</p>
+                    
+                    <div class="space-y-4 pt-4">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-coffee-200 text-coffee-800 flex items-center justify-center shrink-0 mt-1">
+                                📍
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-coffee-950">Location</h4>
+                                <p class="text-sm text-coffee-700">123 Artisan Avenue, Coffee District, Main Street</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-coffee-200 text-coffee-800 flex items-center justify-center shrink-0 mt-1">
+                                ⏰
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-coffee-950">Opening Hours</h4>
+                                <p class="text-sm text-coffee-700">Mon - Fri: 7:00 AM - 9:00 PM</p>
+                                <p class="text-sm text-coffee-700">Sat - Sun: 8:00 AM - 10:00 PM</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-coffee-200 text-coffee-800 flex items-center justify-center shrink-0 mt-1">
+                                ✉️
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-coffee-950">Contact</h4>
+                                <p class="text-sm text-coffee-700">hello@brewandchill.com</p>
+                                <p class="text-sm text-coffee-700">+1 (555) 234-5678</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="bg-white rounded-3xl p-8 border border-coffee-200 shadow-md">
+                    <h3 class="font-serif text-2xl font-bold text-coffee-950 mb-6">Send Us a Message</h3>
+                    <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-coffee-800 uppercase tracking-wider mb-1">Your Name</label>
+                            <input type="text" required placeholder="John Doe" class="w-full px-4 py-3 rounded-xl border border-coffee-200 focus:outline-none focus:ring-2 focus:ring-coffee-500 text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-coffee-800 uppercase tracking-wider mb-1">Email Address</label>
+                            <input type="email" required placeholder="john@example.com" class="w-full px-4 py-3 rounded-xl border border-coffee-200 focus:outline-none focus:ring-2 focus:ring-coffee-500 text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-coffee-800 uppercase tracking-wider mb-1">Message</label>
+                            <textarea rows="4" required placeholder="How can we help you?" class="w-full px-4 py-3 rounded-xl border border-coffee-200 focus:outline-none focus:ring-2 focus:ring-coffee-500 text-sm"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3.5 bg-coffee-800 hover:bg-coffee-900 text-white font-bold rounded-xl transition shadow-md">
+                            Send Message
+                        </button>
+                    </form>
+                    <div id="form-success" class="hidden mt-4 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm text-center">
+                        Thank you! Your message has been received. We will get back to you shortly.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-coffee-950 text-coffee-300 py-12 border-t border-coffee-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div>
+                    <span class="font-serif font-bold text-2xl text-coffee-50">Brew & Chill Coffee Co.</span>
+                    <p class="text-sm text-coffee-400 mt-1">Crafting daily moments of pure coffee bliss.</p>
+                </div>
+                <div class="flex gap-6 text-sm">
+                    <a href="#home" class="hover:text-coffee-100 transition">Home</a>
+                    <a href="#menu" class="hover:text-coffee-100 transition">Menu</a>
+                    <a href="#about" class="hover:text-coffee-100 transition">About</a>
+                    <a href="#contact" class="hover:text-coffee-100 transition">Contact</a>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-coffee-900/80 text-xs text-center text-coffee-500">
+                &copy; 2026 Brew & Chill Coffee Co. All rights reserved. Built for PaaS Deployment.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Order Modal -->
+    <div id="order-modal" class="fixed inset-0 z-50 hidden bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-coffee-200 relative animate-fade-in">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-coffee-400 hover:text-coffee-800 text-xl font-bold">✕</button>
+            <h3 class="font-serif text-2xl font-bold text-coffee-950 mb-2">Order Summary</h3>
+            <p id="modal-item-name" class="text-lg font-semibold text-coffee-800 mb-1"></p>
+            <p id="modal-item-price" class="text-sm text-coffee-600 mb-6"></p>
+            
+            <form onsubmit="handleOrderSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-coffee-800 uppercase tracking-wider mb-1">Your Name</label>
+                    <input type="text" required placeholder="Full Name" class="w-full px-4 py-2.5 rounded-xl border border-coffee-200 text-sm focus:outline-none focus:ring-2 focus:ring-coffee-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-coffee-800 uppercase tracking-wider mb-1">Table Number / Pickup Time</label>
+                    <input type="text" required placeholder="e.g. Table 4 or 15 mins" class="w-full px-4 py-2.5 rounded-xl border border-coffee-200 text-sm focus:outline-none focus:ring-2 focus:ring-coffee-500">
+                </div>
+                <button type="submit" class="w-full py-3 bg-coffee-800 hover:bg-coffee-900 text-white font-bold rounded-xl transition shadow">
+                    Confirm Order
+                </button>
+            </form>
+            <div id="modal-success" class="hidden mt-4 p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs text-center">
+                Order placed successfully! We're preparing your drink.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Navigation Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Contact Form Handling
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const successBox = document.getElementById('form-success');
+            const form = document.getElementById('contact-form');
+            successBox.classList.remove('hidden');
+            form.reset();
+            setTimeout(() => {
+                successBox.classList.add('hidden');
+            }, 4000);
+        }
+
+        // Modal Order Handling
+        function openModal(itemName, itemPrice) {
+            document.getElementById('modal-item-name').innerText = itemName;
+            document.getElementById('modal-item-price').innerText = itemPrice;
+            document.getElementById('order-modal').classList.remove('hidden');
+            document.getElementById('modal-success').classList.add('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('order-modal').classList.add('hidden');
+        }
+
+        function handleOrderSubmit(event) {
+            event.preventDefault();
+            const successBox = document.getElementById('modal-success');
+            successBox.classList.remove('hidden');
+            setTimeout(() => {
+                closeModal();
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
